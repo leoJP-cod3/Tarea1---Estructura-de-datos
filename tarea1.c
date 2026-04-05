@@ -102,7 +102,7 @@ void eliminar_categoria(List *categorias, Queue *fila_pendiente) {
     tarea_actual = (Tarea *) queue_remove(fila_auxiliar);
   }
   free(fila_auxiliar);
-  printf("Se eliminaron %d tareas de la categoria '%s'", tareas_borradas, cat_a_eliminar);
+  printf("Se eliminaron %d tareas de la categoria '%s'\n", tareas_borradas, cat_a_eliminar);
 }
 
 
