@@ -8,7 +8,7 @@ Este sistema ha sido desarrollado en lenguaje C y puede ejecutarse fácilmente u
 ### Requisitos previos:
 1. Tener instalado Visual Studio Code.
 2. Instalar la extensión C/C++ (Microsoft).
-3. Tener instalado un compilador de C (como gcc). Si estás en Windows, se recomienda instalar MinGW o utilizar el entorno WSL. En Replit, esto ya viene configurado por defecto.
+3. Tener instalado un compilador de C (como gcc). Si estás en Windows, se recomienda instalar MinGW o utilizar el entorno WSL.
 
 ### Pasos para compilar y ejecutar:
 1. **Descarga y descomprime** el archivo del proyecto en una carpeta.
@@ -25,6 +25,10 @@ Este sistema ha sido desarrollado en lenguaje C y puede ejecutarse fácilmente u
    * Una vez compilado, puedes ejecutar la aplicación con:
      ```bash
      ./tarea1
+     ```
+   * Si se usa windows, para ejecutar:
+     ```bash
+     .\tarea1.exe
      ```
 
 ## Funcionalidades
