@@ -30,6 +30,25 @@ Este sistema ha sido desarrollado en lenguaje C y puede ejecutarse fácilmente u
      ```bash
      .\tarea1.exe
      ```
+### Solución de problemas: Error de directorios
+Si al intentar compilar el código la terminal arroja un error indicando que no encuentra los archivos de los TDAs (como `list.h`, `queue.h`, etc.), se debe a que los archivos están separados o sueltos en el directorio principal y el código espera que estén agrupados.
+
+Para solucionar esto de manera rápida:
+1. Crea una nueva carpeta llamada `tdas` en el mismo lugar donde está el archivo principal (`tarea1.c`).
+2. Mueve todos los archivos correspondientes a las herramientas (`list.c`, `list.h`, `queue.h`, `extra.c`, `extra.h`, etc.) dentro de esa nueva carpeta `tdas`. El único archivo de código que debe quedar afuera es `tarea1.c`.
+3. Una vez hecho esto, vuelve a intentar compilar utilizando el comando original:
+   ```bash
+   gcc tdas/*.c tarea1.c -Wno-unused-result -o tarea1
+   ```
+4. **Ejecuta el programa**:
+   * Una vez compilado, puedes ejecutar la aplicación con:
+     ```bash
+     ./tarea1
+     ```
+   * Si se usa windows, para ejecutar:
+     ```bash
+     .\tarea1.exe
+     ```
 
 ## Funcionalidades
 ### Funcionando correctamente:
