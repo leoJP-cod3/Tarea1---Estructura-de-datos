@@ -57,13 +57,14 @@ Para solucionar esto de manera rápida:
 * **Mostrar Categorías:** Visualización de todas las etiquetas creadas actualmente.
 * **Atender Siguiente:** Procesamiento de la tarea más antigua en la cola (FIFO), mostrando su información completa.
 * **Eliminar Categoría:** Borrado de una categoría y limpieza automática de todas las tareas asociadas a ella en la cola de pendientes.
+* **Mostrar Tablero General: Visualización de todas las tareas en cola, ordenadas desde la más antigua a la más reciente, sin modificar la fila de atención.
+* **Filtrar por Categoría: Búsqueda específica que muestra solo los pendientes de una categoría elegida, manteniendo intacto el orden y los datos del sistema.
 
-### Problemas conocidos:
-* La visualización del tablero general (opción 6) y el filtrado por categorías (opción 7) están planificados para la siguiente etapa de desarrollo y no muestran datos aún.
-
-### A mejorar:
-* Implementar un sistema de prioridades dentro de las categorías.
-* Añadir persistencia de datos mediante archivos CSV para no perder las tareas al cerrar el programa.
+### Posibles Mejoras Futuras:
+* **Sistema de Prioridades:** Añadir un nivel de urgencia (Alta, Media, Baja) que permita a ciertas tareas críticas saltarse la fila normal de atención.
+* **Añadir persistencia de datos mediante archivos CSV para no perder las tareas al cerrar el programa.
+* **Fechas Límite :** Registrar no solo la hora de creación, sino también solicitar una fecha de entrega para ordenar visualmente las tareas por urgencia.
+* **Validación Robusta de Entradas:** Mejorar el manejo de errores del teclado para evitar que el usuario ingrese categorías en blanco o caracteres no permitidos.
 
 ## Ejemplo de uso
 
@@ -92,3 +93,19 @@ El usuario decide completar su primera tarea del día.
 * **Opción seleccionada:** `5) Atender Siguiente`
 * El sistema muestra los detalles de la tarea más antigua: *"Estudiar gramática de coreano y vocabulario nuevo"*, junto con su categoría y la fecha/hora en que fue registrada. La tarea es eliminada de la cola tras ser mostrada.
 
+### Paso 5: Visualización del Tablero General
+El usuario quiere revisar cuántas tareas le quedan pendientes en total después de haber trabajado.
+* **Opción seleccionada:** `6) Mostrar Tablero General`
+* El sistema despliega una tabla ordenada mostrando la tarea restante: "Comprar entradas para el próximo concierto de Twice", indicando su categoría ("Música"). La tarea no se borra, solo se muestra para tener un panorama visual.
+
+### Paso 6: Filtrar Pendientes por Categoría
+El usuario desea buscar si tiene más pendientes relacionados con un área en específico sin alterar el orden de llegada.
+* **Opción seleccionada:** `7) Filtrar por Categoría`
+* **Entrada:** `Música`
+* El sistema busca en la cola y muestra en pantalla exclusivamente los detalles de las entradas para el concierto. Si existieran más tareas de "Música", se listarían todas. La cola principal de atención se mantiene intacta.
+
+### Paso 7: Eliminar una Categoría y Limpieza
+El usuario decide que ya gestionó todo lo relacionado con esa área y quiere borrarla del sistema.
+* **Opción seleccionada:** `2) Eliminar Categoría`
+* **Entrada:** `Música`
+* El sistema elimina de forma definitiva "Música" de las opciones disponibles. Además, revisa automáticamente la cola de atención y borra la tarea de comprar las entradas, dejando la memoria limpia. Si el usuario vuelve a presionar la opción 6, el sistema le avisará que el tablero está vacío.
