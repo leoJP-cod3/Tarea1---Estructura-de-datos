@@ -26,6 +26,8 @@ void mostrarMenuPrincipal() {
   puts("3) Mostrar Categorías");
   puts("4) Registrar Pendiente");
   puts("5) Atender Siguiente");
+  puts("6) Mostrar Tablero General");
+  puts("7) Filtrar por categorias");
   puts("0) Salir");
 }
 
@@ -165,6 +167,78 @@ void atender_siguiente(Queue *fila_pendiente) {
   free(tarea_atendida);
 }
 
+
+void mostrar_tablero_general(Queue *fila_pendiente){
+  Tarea *tarea_actual = (Tarea*) queue_remove(fila_pendiente);
+
+  if (tarea_actual == NULL){
+    printf("\nEl tablero está vacío. No hay pendientes.\n");
+    return;
+  }
+  
+  printf("\nTABLERO GENERAL\n");
+  printf("-------------------------------------------------\n");
+
+  Queue *fila_aux = queue_create(NULL);
+  int contador = 1;
+  
+  while(tarea_actual != NULL){
+    printf("Tarea: %d | Categoria: %-15s | Descripción: %s\n", contador, tarea_actual->categoria, tarea_actual->descripcion);
+    queue_insert(fila_aux, tarea_actual);
+    tarea_actual = (Tarea*) queue_remove(fila_pendiente);
+    contador++;
+  }
+
+  tarea_actual = (Tarea*) queue_remove(fila_aux);
+  while(tarea_actual != NULL){
+    queue_insert(fila_pendiente, tarea_actual);
+    tarea_actual = (Tarea*) queue_remove(fila_aux);
+  }
+  free(fila_aux);
+  printf("-------------------------------------------------\n");
+}
+
+
+void filtrar_por_categoria(Queue *fila_pendiente, List *categorias){
+  char cat_buscar[150];
+  printf("Categoria(s) disponible(s) para filtrar:\n");
+  mostrar_categoria(categorias);
+
+  printf("Ingrese la categoria que desea filtrar: ");
+  scanf(" %149[^\n]", cat_buscar);
+  
+  Tarea *tarea_actual = (Tarea*) queue_remove(fila_pendiente);
+
+  if (tarea_actual == NULL){
+    printf("\nNo hay pendientes registrados en el sistema.\n");
+    return;
+  }
+  
+  printf("\nPENDIENTES DE LA CATEGORIA: %s\n\n", cat_buscar);
+  Queue *fila_aux = queue_create(NULL);
+  int encontradas = 0;
+  
+  while(tarea_actual != NULL){
+    if (strcmp(tarea_actual->categoria, cat_buscar) == 0){
+      printf("Descripción: %s | Hora Registrada: %s\n\n", tarea_actual->descripcion, ctime(&tarea_actual->hora_registro));
+      encontradas++;
+    }
+    queue_insert(fila_aux, tarea_actual);
+    tarea_actual = (Tarea*) queue_remove(fila_pendiente);
+  }
+  
+  if (encontradas == 0) printf("\nNo se encontraron tareas pendientes para la categoria %s\n", cat_buscar);
+
+  tarea_actual = (Tarea*) queue_remove(fila_aux);
+  while(tarea_actual != NULL){
+    queue_insert(fila_pendiente, tarea_actual);
+    tarea_actual = (Tarea*) queue_remove(fila_aux);
+  }
+  free(fila_aux);
+  printf("-------------------------------------------------\n");
+}
+
+
 int main() {
   char opcion;
   List *categorias = list_create(); // Lista para almacenar categorías
@@ -191,6 +265,12 @@ int main() {
       break;
     case '5':
       atender_siguiente(fila_pendiente);
+      break;
+    case '6':
+      mostrar_tablero_general(fila_pendiente);
+      break;
+    case '7':
+      filtrar_por_categoria(fila_pendiente, categorias);
       break;
     case '0':
       puts("Saliendo del planificador.");
