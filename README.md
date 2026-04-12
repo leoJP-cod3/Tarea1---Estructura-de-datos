@@ -57,12 +57,12 @@ Para solucionar esto de manera rápida:
 * **Mostrar Categorías:** Visualización de todas las etiquetas creadas actualmente.
 * **Atender Siguiente:** Procesamiento de la tarea más antigua en la cola (FIFO), mostrando su información completa.
 * **Eliminar Categoría:** Borrado de una categoría y limpieza automática de todas las tareas asociadas a ella en la cola de pendientes.
-* **Mostrar Tablero General: Visualización de todas las tareas en cola, ordenadas desde la más antigua a la más reciente, sin modificar la fila de atención.
-* **Filtrar por Categoría: Búsqueda específica que muestra solo los pendientes de una categoría elegida, manteniendo intacto el orden y los datos del sistema.
+* **Mostrar Tablero General:** Visualización de todas las tareas en cola, ordenadas desde la más antigua a la más reciente, sin modificar la fila de atención.
+* **Filtrar por Categoría:** Búsqueda específica que muestra solo los pendientes de una categoría elegida, manteniendo intacto el orden y los datos del sistema.
 
 ### Posibles Mejoras Futuras:
 * **Sistema de Prioridades:** Añadir un nivel de urgencia (Alta, Media, Baja) que permita a ciertas tareas críticas saltarse la fila normal de atención.
-* **Añadir persistencia de datos mediante archivos CSV para no perder las tareas al cerrar el programa.
+* **Añadir persistencia de datos mediante archivos CSV para no perder las tareas al cerrar el programa.**
 * **Fechas Límite :** Registrar no solo la hora de creación, sino también solicitar una fecha de entrega para ordenar visualmente las tareas por urgencia.
 * **Validación Robusta de Entradas:** Mejorar el manejo de errores del teclado para evitar que el usuario ingrese categorías en blanco o caracteres no permitidos.
 
