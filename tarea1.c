@@ -21,9 +21,9 @@ typedef struct{
 void mostrarMenuPrincipal() {
   limpiarPantalla();
   puts("======= Planificador de Tareas =======");
-  puts("1) Nueva Categoría");
-  puts("2) Eliminar Categoría");
-  puts("3) Mostrar Categorías");
+  puts("1) Nueva Categoria");
+  puts("2) Eliminar Categoria");
+  puts("3) Mostrar Categorias");
   puts("4) Registrar Pendiente");
   puts("5) Atender Siguiente");
   puts("6) Mostrar Tablero General");
@@ -47,7 +47,7 @@ void mostrar_categoria(List *categorias) {
   Categoria *cat_actual = (Categoria *) list_first(categorias);
 
   if (cat_actual == NULL){
-    printf("\nLa lista de categorias esta vacía.\n");
+    printf("\nLa lista de categorias esta vacia.\n");
     return;
   }
   printf("------- Lista de Categorias -------\n");
@@ -172,7 +172,7 @@ void mostrar_tablero_general(Queue *fila_pendiente){
   Tarea *tarea_actual = (Tarea*) queue_remove(fila_pendiente);
 
   if (tarea_actual == NULL){
-    printf("\nEl tablero está vacío. No hay pendientes.\n");
+    printf("\nEl tablero esta vacio. No hay pendientes.\n");
     return;
   }
   
@@ -276,7 +276,7 @@ int main() {
       puts("Saliendo del planificador.");
       break;
     default:
-      puts("Opción no válida. Por favor, intente de nuevo.");
+      puts("Opcion no valida. Por favor, intente de nuevo.");
     }
     presioneTeclaParaContinuar();
 
